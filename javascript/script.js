@@ -9,17 +9,25 @@ function mySimonSays() {
   const valueUser = document.getElementsByTagName("input");
 
   const userNumbers = [];
+  const checkArray = [];
 
   start.addEventListener("click", function () {
     //! Genera numeri random
-    myGenerateRandomNumber();
+    let numbersToWin = myGenerateRandomNumber();
 
     //! Fai sparire i numeri e fai apparire l'input per user
-    const clock = setTimeout(myDisappear, 3000);
+    const clock = setTimeout(myDisappear, 1000);
 
     //! Pusha i valori dati da user in array
     confirm.addEventListener("click", function () {
-      userNumbers.push(parseInt(valueUser.value));
+      for (let i = 0; i < valueUser.length; i++) {
+        if (!isNaN(parseInt(valueUser[i].value))) {
+          userNumbers.push(parseInt(valueUser[i].value));
+        }
+        if (numbersToWin[i] === userNumbers[i]) {
+          checkArray.push(userNumbers[i]);
+        }
+      }
       console.log(userNumbers);
     });
   });
@@ -46,4 +54,6 @@ function mySimonSays() {
     numbers.classList.add("d-none");
     formUser.classList.remove("d-none");
   }
+
+  function pushElements
 }
