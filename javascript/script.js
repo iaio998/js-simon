@@ -9,10 +9,10 @@ function mySimonSays() {
   const valueUser = document.getElementsByTagName("input");
   const result = document.querySelector(".alert");
 
-  const userNumbers = [];
-  const checkArray = [];
-
   start.addEventListener("click", function () {
+    start.classList.add("d-none");
+    result.classList.add("d-none");
+    result.classList.add("alert-danger", "alert-success");
     //! Genera numeri random
     let numbersToWin = myGenerateRandomNumber();
     console.log(numbersToWin);
@@ -21,6 +21,9 @@ function mySimonSays() {
 
     //! Pusha i valori dati da user in array
     confirm.addEventListener("click", function () {
+      const userNumbers = [];
+      const checkArray = [];
+      start.classList.remove("d-none");
       let counter = 0;
       for (let i = 0; i < valueUser.length; i++) {
         let a;
@@ -37,14 +40,18 @@ function mySimonSays() {
 
       if (checkArray.length === 5) {
         console.log("Hai vinto");
-        result.classList.remove("d-none");
+        result.classList.remove("d-none", "alert-danger");
         result.classList.add("alert-success");
-        result.innerHTML = "Hai vinto";
+        result.innerHTML = `Complimenti! Hai vinto, ti sei ricordato tutti questi numeri: ${checkArray.join(
+          ", "
+        )}`;
       } else {
         console.log("Hai perso");
-        result.classList.remove("d-none");
+        result.classList.remove("d-none", "alert-success");
         result.classList.add("alert-danger");
-        result.innerHTML = "Hai perso";
+        result.innerHTML = `Che peccato! Hai perso purtroppo, ti sei ricordato ${counter} numeri: ${checkArray.join(
+          ", "
+        )}; la sequenza completa era ${numbersToWin.join(", ")}`;
       }
     });
   });
@@ -56,7 +63,10 @@ function mySimonSays() {
   function myGenerateRandomNumber() {
     const numToRemember = [];
     while (numToRemember.length < 5) {
-      numToRemember.push(getRndInteger(1, 100));
+      let obj = getRndInteger(1, 100);
+      if (!numToRemember.includes(obj)) {
+        numToRemember.push(getRndInteger(1, 100));
+      }
     }
     numbers.classList.remove("d-none");
     numbers.classList.add("fw-bold", "fs-3", "text-danger");
