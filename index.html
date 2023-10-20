@@ -23,15 +23,23 @@
         <!--  UN BOTTONE START -->
         <button id="starting-btn" class="btn btn-primary m-auto d-block my-5">Clicca per iniziare a giocare</button>
 
-        <!-- UNA CASELLA DI COMPARSA  -->
-        <div id="numbers" class="text-center d-none"><strong>Ciao sono un div</strong></div>
+        <!-- UNA CASELLA A COMPARSA  -->
+        <div id="numbers" class="text-center d-none"></div>
 
         <!-- UNA CASELLA INPUT -->
-        <label for="data">Data input</label>
-        <input type="text" name="data" id="data">
+        <div id="form" class="text-center">
+            <label for="data" class="fw-bold fs-3 my-3">Inserisci i numeri appena visti!</label> <br>
+            <input type="text" name="data" id="val-1">
+            <input type="text" name="data" id="val-2">
+            <input type="text" name="data" id="val-3">
+            <input type="text" name="data" id="val-4">
+            <input type="text" name="data" id="val-5">
+            <br>
+            <!-- UN BOTTONE -->
+            <button id="confirm" class="btn btn-success my-3">Clicca per confermare</button>
+        </div>
 
-        <!-- UN BOTTONE -->
-        <button class="btn btn-success"></button>
+
 
         <!-- UN CONTENITORE PER IL RISULTATO/ERRORE -->
         <div class="alert d-none my-3"></div>
